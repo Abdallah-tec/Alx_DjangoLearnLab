@@ -3,7 +3,7 @@ from typing import Any
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
 from django.http import HttpResponse
-from .models import Author, Book, Librarian, Library
+from .models import Library,Author, Book, Librarian
 
 from django.contrib.auth.models import User
 # Create your views here.
@@ -15,7 +15,7 @@ def booklist(request):
 
 class LibraryListView(DetailView):
     model = Library
-    template_name = 'relationship_app/librarylist.html'
+    template_name = 'relationship_app/Library_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
