@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from typing import Any
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, CreateView, TemplateView
+from django.views.generic.detail import DetailView
 
 from django.http import HttpResponse
 from .models import Library,Author, Book, Librarian
