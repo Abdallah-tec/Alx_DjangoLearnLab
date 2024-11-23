@@ -29,17 +29,6 @@ class Librarian(models.Model):
         return self.name
 
 class UserProfile(models.Model):
-    class Role(models.TextChoices):
-        admin = "Admin"
-        librarian = "Librarian"
-        member = "Member"
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name= 'userprofile')
-    role = models.CharField(choices=Role, max_length=10, default=Role.member)
-    
-    def __str__(self) -> str:
-        return f"{self.user.username}'s profile. Role: {self.role}" 
-
-class UserProfile(models.Model):
     ROLE_CHOICES = (
         ('Admin', 'Admin'),
         ('Librarian', 'Librarian'),
@@ -50,3 +39,13 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
+class UserProfile(models.Model):
+    class Role(models.TextChoices):
+        admin = "Admin"
+        librarian = "Librarian"
+        member = "Member"
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name= 'userprofile')
+    role = models.CharField(choices=Role, max_length=10, default=Role.member)
+    
+    def __str__(self) -> str:
+        return f"{self.user.username}'s profile. Role: {self.role}" 
