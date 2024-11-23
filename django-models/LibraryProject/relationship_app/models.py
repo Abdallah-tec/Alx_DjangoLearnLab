@@ -38,3 +38,15 @@ class UserProfile(models.Model):
     
     def __str__(self) -> str:
         return f"{self.user.username}'s profile. Role: {self.role}" 
+
+class UserProfile(models.Model):
+    ROLE_CHOICES = (
+        ('Admin', 'Admin'),
+        ('Librarian', 'Librarian'),
+        ('Member', 'Member'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='userprofile')
+    role = models.CharField(max_length=10, choices=[('Admin', 'Admin'), ('Librarian', 'Librarian'), ('Member', 'Member')])
+
+    def __str__(self):
+        return f"{self.user.username} - {self.role}"
