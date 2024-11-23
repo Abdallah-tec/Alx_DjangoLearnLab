@@ -25,12 +25,11 @@ class LibraryDetailView(DetailView):
         context['books'] = library.books.all()
         return context
 
-
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from .models import UserProfile
 
 def has_role(user, role):
-    return UserProfile.objects.filter(user=user.id, role=role).exists()
+    return UserProfile.objects.filter(user=user, role=role).exists()
 def is_admin(user):
     return has_role(user, "Admin")
 def is_librarian(user):
@@ -52,6 +51,7 @@ def librarian_view(request):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 from django.contrib.auth.forms import UserCreationForm

@@ -5,7 +5,7 @@ from .views import list_books , LibraryDetailView
 urlpatterns = [
     path('booklist/',views.list_books, name = "list_books"),
     path('librarylist/<int:pk>/',views.LibraryDetailView.as_view(), name ="librarylist"),
-    path('adminsonly/', views.admin_view, name = "admin"),
+    path('admin/', views.admin_view, name = "admin"),
     path('librarian/', views.librarian_view, name = "librarian"),
     path('member/', views.member_view, name = 'member'),
     path('login/', views.LoginView.as_view(template_name='login.html'), name = 'login'),

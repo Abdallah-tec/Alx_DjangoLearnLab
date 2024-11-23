@@ -39,6 +39,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
+
 class UserProfile(models.Model):
     class Role(models.TextChoices):
         admin = "Admin"
@@ -48,4 +49,4 @@ class UserProfile(models.Model):
     role = models.CharField(choices=Role, max_length=10, default=Role.member)
     
     def __str__(self) -> str:
-        return f"{self.user.username}'s profile. Role: {self.role}" 
+        return f"{self.user.username}'s profile. Role: {self.role}"
