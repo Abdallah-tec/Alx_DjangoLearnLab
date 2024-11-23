@@ -28,26 +28,26 @@ class LibraryDetailView(DetailView):
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from .models import UserProfile
 
-def has_role(user, role):
-    return UserProfile.objects.filter(user=user, role=role).exists()
 def is_admin(user):
-    return has_role(user, "Admin")
-def is_librarian(user):
-    return has_role(user, "Librarian")
-def is_member(user):
-    return has_role(user, "Member")
+    return user.userprofile.role == 'Admin'
 
-# Views for Admin users
+def is_librarian(user):
+    return user.userprofile.role == 'Librarian'
+
+def is_member(user):
+    return user.userprofile.role == 'Member'
+
+    # Create the Role-Based Views
+# relationship_app/views.py (continued)
+
 @user_passes_test(is_admin)
 def admin_view(request):
     return render(request, 'relationship_app/admin_view.html')
 
-# View for Librarian users
 @user_passes_test(is_librarian)
 def librarian_view(request):
     return render(request, 'relationship_app/librarian_view.html')
 
-# View for Member users
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
