@@ -74,10 +74,10 @@ class ProfileView(TemplateView):
     
 from django.contrib.auth.views import LoginView, LogoutView
 
-class login(LoginView):
+class LoginView(LoginView):
     template_name = 'relationship_app/login.html'
 
-class logout(LogoutView):
+class LogoutView(LogoutView):
     template_name = 'relationship_app/logout.html'
 
 from django.shortcuts import render, get_object_or_404, redirect
