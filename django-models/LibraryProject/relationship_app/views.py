@@ -8,13 +8,13 @@ from .models import Library,Author, Book, Librarian
 
 from django.contrib.auth.models import User
 # Create your views here.
-def booklist(request):
+def list_books(request):
     books = Book.objects.all()
     context = {'books':books}
 
     return render(request, 'relationship_app/list_books.html',context=context)
 
-class LibraryListView(DetailView):
+class LibraryDetailView(DetailView):
     model = Library
     template_name = 'relationship_app/library_detail.html'
 
