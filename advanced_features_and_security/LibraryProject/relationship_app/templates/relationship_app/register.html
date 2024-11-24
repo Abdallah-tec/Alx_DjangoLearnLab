@@ -1,0 +1,17 @@
+!-- register.html --
+!DOCTYPE html
+html lang=en
+head
+    meta charset=UTF-8
+    titleRegistertitle
+    link rel=stylesheet href={% static 'cssstyles.css' %}
+head
+body
+    h1Registerh1
+    form method=post
+        {% csrf_token %}
+        {{ form.as_p }}
+        button type=submitRegisterbutton
+    form
+body
+html
